@@ -22,8 +22,19 @@
       <button v-on:click="reduce(5)">Remove 5</button>
       <p>Result: {{ counter }}</p>
       <label for="name">Name</label>
-      <input type="text" name="name" id="name" v-on:input="setName($event, 'is on')">
-      <p>Your name:{{ name }}</p>
+      <!-- v-on:keyup.enter when enter key is pressed confirmedInput will be excuted -->
+      <input
+        type="text"
+        name="name"
+        id="name" v-on:input="setName($event, 'is on')"
+        v-on:keyup.enter="confirmedInput"
+      >
+      <p>Your name:{{ confirmedName }}</p>
+      <!-- prevent re-load form -->
+      <form v-on:submit.prevent="submitForm">
+        <input type="text" name="" id="">
+        <button>Sign Up</button>
+      </form>
     </section>
   </body>
 </html>
